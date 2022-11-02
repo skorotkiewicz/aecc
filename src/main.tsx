@@ -6,6 +6,7 @@ import Index from "./components/Index";
 import "./App.scss";
 import Header from "./components/core/Header";
 import Footer from "./components/core/Footer";
+import Exams from "./components/Exams";
 import { DataProvider } from "./context/DataContext";
 
 ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
           <Routes>
             <Route index element={<Index />} />
             <Route path="create" element={<Create />} />
+            <Route path="exams" element={<Exams />} />
             <Route path="*" element={<div>404 Not Found</div>} />
           </Routes>
         </main>

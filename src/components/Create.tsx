@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useData } from "../context/DataContext";
+import { db } from "../db";
 import { generateExams } from "../utils";
 import QForm from "./QForm";
 
@@ -25,12 +26,19 @@ const Create = () => {
           ))}
         </div>
         <button
-          onClick={() => {
+          onClick={async () => {
             const c = generateExams(questions);
 
             if (c.exams[0].length > 0) {
               setExams(c.exams);
               setExamsStudents(c.examsStudent);
+
+              const id = await db.exams.add({
+                examTeacher: c.exams,
+                examStudents: c.examsStudent,
+              });
+
+              console.log(id);
             }
           }}
         >
@@ -41,7 +49,7 @@ const Create = () => {
           {examsStudents.map((e: any, id: number) => (
             <div className="exam-main" key={id}>
               <h3>Exam ID: {e[0].e}</h3>
-
+              {/* <Barcode value={e[0].e} /> */}
               {/* <div>{JSON.stringify(exams[id])}</div> */}
               {e.map((a: any, k: number) => (
                 <div key={k} className="exam-question">

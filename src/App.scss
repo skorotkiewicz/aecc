@@ -98,13 +98,35 @@ footer {
 }
 
 header {
-  -webkit-font-feature-settings: "smcp";
-  font-feature-settings: "smcp";
-  border-bottom: 3px solid #eee;
+  display: flex;
+  align-items: center;
+
   font-variant: small-caps;
   font-weight: 500;
   margin-bottom: 10px;
-  text-align: center;
+
+  background-color: #fff;
+  padding: 10px;
+  z-index: 2;
+
+  -webkit-box-shadow: 0 3px 5px #ccc;
+  -moz-box-shadow: 0 3px 5px #ccc;
+  box-shadow: 0 3px 5px #ccc;
+
+  h3 {
+    cursor: pointer;
+  }
+
+  .menu {
+    margin-left: auto;
+
+    a {
+      margin: 10px;
+      font-size: 14px;
+      text-decoration: none;
+      color: #555;
+    }
+  }
 }
 
 header {
