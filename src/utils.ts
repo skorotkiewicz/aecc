@@ -30,7 +30,7 @@ export const generateExams = (array: any, howMany: number = 4) => {
     let examQuestion: any = "";
     let examAnswers: any = [];
 
-    copyArr.map((q: any, _idq: number) => {
+    copyArr.map((q: any, uid: number) => {
       correctAnswers = [];
 
       examAnswers = arrayShuffle(q.answers);
@@ -43,8 +43,21 @@ export const generateExams = (array: any, howMany: number = 4) => {
         }
       });
 
-      examTch.push({ qid: q.id, examId, c: correctAnswers });
-      examSdt.push({ qid: q.id, examId, q: examQuestion, a: examAnswers });
+      // examTch.push({ qid: q.id, examId, c: correctAnswers });
+      // examTch.push({ q: q.id, c: correctAnswers });
+      examTch.push({
+        // q: q.id,
+        u: uid + 1,
+        e: examId,
+        c: correctAnswers,
+      });
+
+      examSdt.push({
+        u: uid + 1,
+        q: examQuestion,
+        e: examId,
+        a: examAnswers,
+      });
     });
 
     exams.push(examTch);
