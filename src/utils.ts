@@ -1,16 +1,19 @@
-// Fisher-Yates shuffle algorithm
-export const fy = (a: any) => {
-  let b;
-  let c;
-  let d;
+// Durstenfeld algorithm
+export const arrayShuffle = (array: any) => {
+  if (array.length === 0) return [];
 
-  c = a.length;
-  while (c)
-    (b = (Math.random() * c--) | 0), (d = a[c]), (a[c] = a[b]), (a[b] = d);
+  array = [...array];
+
+  for (let index = array.length - 1; index > 0; index--) {
+    const newIndex = Math.floor(Math.random() * (index + 1));
+    [array[index], array[newIndex]] = [array[newIndex], array[index]];
+  }
+
+  return array;
 };
 
 export const generateExams = (array: any, howMany: number = 4) => {
-  const copyArr = [...array];
+  let copyArr = [...array];
   let examTch: any = [];
   let examSdt: any = [];
   const exams: any = [];
@@ -18,12 +21,11 @@ export const generateExams = (array: any, howMany: number = 4) => {
 
   // eg. 5 versions of exam
   for (let i = 0; i < howMany; i++) {
-    fy(copyArr);
+    copyArr = arrayShuffle(copyArr);
     examTch = [];
     examSdt = [];
     let examId;
     let correctAnswers: number[] = [];
-    // let questions: any = [];
 
     let examQuestion: any = "";
     let examAnswers: any = [];
@@ -31,20 +33,16 @@ export const generateExams = (array: any, howMany: number = 4) => {
     copyArr.map((q: any, _idq: number) => {
       correctAnswers = [];
 
-      fy(q.answers); // <-- fixme
-      examAnswers = q.answers;
+      examAnswers = arrayShuffle(q.answers);
       examQuestion = q.question;
       // examId = q.id;
       examId = i;
 
-      q.answers.map((a: any, id: number) => {
+      examAnswers.map((a: any, id: number) => {
         if (a.correct) {
           correctAnswers.push(id);
         }
       });
-
-      // questions.push({ i: examId, c: correctAnswers });
-      // examTch.push({ examId, q: questions });
 
       examTch.push({ examId, c: correctAnswers });
       examSdt.push({ examId, q: examQuestion, a: examAnswers });
