@@ -35,7 +35,6 @@ export const generateExams = (array: any, howMany: number = 4) => {
 
       examAnswers = arrayShuffle(q.answers);
       examQuestion = q.question;
-      // examId = q.id;
       examId = i;
 
       examAnswers.map((a: any, id: number) => {
@@ -44,8 +43,8 @@ export const generateExams = (array: any, howMany: number = 4) => {
         }
       });
 
-      examTch.push({ examId, c: correctAnswers });
-      examSdt.push({ examId, q: examQuestion, a: examAnswers });
+      examTch.push({ qid: q.id, examId, c: correctAnswers });
+      examSdt.push({ qid: q.id, examId, q: examQuestion, a: examAnswers });
     });
 
     exams.push([examTch]);

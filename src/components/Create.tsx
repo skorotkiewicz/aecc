@@ -43,7 +43,9 @@ const Create = () => {
                   <div style={{ border: "1px solid #aaa", margin: 10 }} key={k}>
                     {a.map((c: any, k: number) => (
                       <div key={k} style={{ border: "1px solid #ccc" }}>
-                        <h3>{c.examId}</h3>
+                        <h3>
+                          {c.examId}q{c.qid}
+                        </h3>
                         <em style={{ color: "#ff0000" }}>{c.q}</em>
                         <p>
                           {c.a.map((f: any, k: number) => (
