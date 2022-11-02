@@ -97,7 +97,6 @@ header {
   border: 1px solid #ccc;
   padding: 15px;
   background-color: #fcfcfc;
-  // margin: 10px;
 
   .question {
     padding: 7px;
@@ -129,14 +128,13 @@ header {
     button {
       border: 0;
       background-color: transparent;
-      // width: 28px;
-      // height: 28px;
       cursor: pointer;
     }
   }
 
   .add {
     margin-top: 10px;
+    cursor: pointer;
   }
 }
 
