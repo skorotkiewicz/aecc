@@ -1,3 +1,6 @@
+import { customAlphabet } from "nanoid";
+const nanoid = customAlphabet("1234567890", 10);
+
 // Durstenfeld algorithm
 export const arrayShuffle = (array: any) => {
   if (array.length === 0) return [];
@@ -35,7 +38,8 @@ export const generateExams = (array: any, howMany: number = 4) => {
 
       examAnswers = arrayShuffle(q.answers);
       examQuestion = q.question;
-      examId = i;
+      // examId = i;
+      examId = nanoid();
 
       examAnswers.map((a: any, id: number) => {
         if (a.correct) {

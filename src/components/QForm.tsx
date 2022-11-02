@@ -44,7 +44,6 @@ const QForm = ({ id, question }: any) => {
             className="answer-input"
             value={question.answers[i].answer}
             onChange={(e) => {
-              //   question.answers[i].id = i;
               question.answers[i].answer = e.target.value;
               setQuestions([...questions]);
             }}

@@ -47,13 +47,13 @@ const Create = () => {
                 <div key={k} className="exam-question">
                   <h4>Question: {a.u}</h4>
                   <em className="question">{a.q}</em>
-                  <p>
+                  <div>
                     {a.a.map((f: any, k: number) => (
                       <div key={k}>
                         <strong>{k + 1}</strong>){f.answer}
                       </div>
                     ))}
-                  </p>
+                  </div>
                 </div>
               ))}
             </div>
