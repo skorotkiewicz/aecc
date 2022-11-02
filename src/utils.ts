@@ -6,31 +6,36 @@ export const fy = (a: any) => {
 
   c = a.length;
   while (c)
-    (b = (Math.random() * (--c + 1)) | 0),
-      (d = a[c]),
-      (a[c] = a[b]),
-      (a[b] = d);
+    (b = (Math.random() * c--) | 0), (d = a[c]), (a[c] = a[b]), (a[b] = d);
 };
 
 export const generateExams = (array: any, howMany: number = 4) => {
   const copyArr = [...array];
-  const exams: any = [{}];
+  let examTch: any = [];
+  let examSdt: any = [];
+  const exams: any = [];
+  const examsStudent: any = [];
 
   // eg. 5 versions of exam
   for (let i = 0; i < howMany; i++) {
     fy(copyArr);
+    examTch = [];
+    examSdt = [];
     let examId;
-    let questionId;
     let correctAnswers: number[] = [];
-    let questions: any = [];
+    // let questions: any = [];
+
+    let examQuestion: any = "";
+    let examAnswers: any = [];
 
     copyArr.map((q: any, _idq: number) => {
       correctAnswers = [];
 
-      fy(q.answers);
-
+      fy(q.answers); // <-- fixme
+      examAnswers = q.answers;
+      examQuestion = q.question;
+      // examId = q.id;
       examId = i;
-      questionId = q.id;
 
       q.answers.map((a: any, id: number) => {
         if (a.correct) {
@@ -38,11 +43,19 @@ export const generateExams = (array: any, howMany: number = 4) => {
         }
       });
 
-      questions.push({ i: questionId, c: correctAnswers });
+      // questions.push({ i: examId, c: correctAnswers });
+      // examTch.push({ examId, q: questions });
+
+      examTch.push({ examId, c: correctAnswers });
+      examSdt.push({ examId, q: examQuestion, a: examAnswers });
     });
 
-    exams.push({ examId, q: questions });
+    exams.push([examTch]);
+    examsStudent.push([examSdt]);
   }
+
+  // console.log(examsStudent);
   // console.log(exams);
-  return exams;
+
+  return { exams, examsStudent };
 };

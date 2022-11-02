@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { useData } from "../context/DataContext";
 import { generateExams } from "../utils";
 import QForm from "./QForm";
 
 const Create = () => {
   const { questions, setQuestions }: any = useData();
+
+  const [exams, setExams] = useState<any>([]);
+  const [examsStudents, setExamsStudents] = useState<any>([]);
 
   const addQuestion = () => {
     setQuestions((prev: any) => [...prev, { answers: [{}, {}, {}, {}] }]);
@@ -23,11 +27,36 @@ const Create = () => {
         <button
           onClick={() => {
             const c = generateExams(questions);
-            console.log(c);
+
+            setExams(c.exams);
+            setExamsStudents(c.examsStudent);
           }}
         >
           Generate
         </button>
+
+        <div>
+          {examsStudents &&
+            examsStudents.map((e: any, id: number) => (
+              <div key={id}>
+                {e.map((a: any, k: number) => (
+                  <div style={{ border: "1px solid #aaa", margin: 10 }} key={k}>
+                    {a.map((c: any, k: number) => (
+                      <div key={k} style={{ border: "1px solid #ccc" }}>
+                        <h3>{c.examId}</h3>
+                        <em style={{ color: "#ff0000" }}>{c.q}</em>
+                        <p>
+                          {c.a.map((f: any, k: number) => (
+                            <div key={k}>{f.answer}</div>
+                          ))}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
