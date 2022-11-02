@@ -28,12 +28,14 @@ main {
   border: 1px solid #aaa;
   margin: 15px;
   padding: 5px;
+  background-color: #fcfcfc;
 
   .exam-question {
     border: 1px solid #ccc;
     margin: 10px;
     width: 200px;
     padding: 5px;
+    background-color: #fff;
 
     break-inside: avoid;
     display: inline-block;
