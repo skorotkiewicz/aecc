@@ -4,7 +4,7 @@ import { useData } from "../context/DataContext";
 
 const QForm = ({ id, question }: any) => {
   const { questions, setQuestions }: any = useData();
-  const [answers, setAnswers] = useState<any>(3);
+  const [answers, setAnswers] = useState<any>(4);
 
   const addAnswer = () => {
     question.id = id;
@@ -44,7 +44,7 @@ const QForm = ({ id, question }: any) => {
             className="answer-input"
             value={question.answers[i].answer}
             onChange={(e) => {
-              question.answers[i].id = i;
+              //   question.answers[i].id = i;
               question.answers[i].answer = e.target.value;
               setQuestions([...questions]);
             }}
