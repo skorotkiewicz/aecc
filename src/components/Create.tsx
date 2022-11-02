@@ -38,27 +38,45 @@ const Create = () => {
         <div>
           {examsStudents &&
             examsStudents.map((e: any, id: number) => (
-              <div key={id}>
+              <div style={{ border: "1px solid #aaa", margin: 10 }} key={id}>
                 {e.map((a: any, k: number) => (
-                  <div style={{ border: "1px solid #aaa", margin: 10 }} key={k}>
-                    {a.map((c: any, k: number) => (
-                      <div key={k} style={{ border: "1px solid #ccc" }}>
-                        <h3>
-                          {c.examId}q{c.qid}
-                        </h3>
-                        <em style={{ color: "#ff0000" }}>{c.q}</em>
-                        <p>
-                          {c.a.map((f: any, k: number) => (
-                            <div key={k}>{f.answer}</div>
-                          ))}
-                        </p>
-                      </div>
-                    ))}
+                  <div key={k} style={{ border: "1px solid #ccc", margin: 10 }}>
+                    <h3>
+                      {a.examId}q{a.qid}
+                    </h3>
+                    <em style={{ color: "#ff0000" }}>{a.q}</em>
+                    <p>
+                      {a.a.map((f: any, k: number) => (
+                        <div key={k}>{f.answer}</div>
+                      ))}
+                    </p>
                   </div>
                 ))}
               </div>
             ))}
         </div>
+
+        {exams.length > 0 && (
+          <div>
+            <h2>Solutions:</h2>
+            {exams.map((e: any, k: number) => (
+              <div key={k}>
+                {e.map((a: any, k: number) => (
+                  <div style={{ border: "1px solid #ccc", margin: 10 }} key={k}>
+                    <p>
+                      {a.examId}q{a.qid}
+                    </p>
+                    <p>
+                      {a.c.map((d: any, k: number) => (
+                        <div key={k}>{d.toString()}</div>
+                      ))}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

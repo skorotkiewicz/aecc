@@ -47,12 +47,12 @@ export const generateExams = (array: any, howMany: number = 4) => {
       examSdt.push({ qid: q.id, examId, q: examQuestion, a: examAnswers });
     });
 
-    exams.push([examTch]);
-    examsStudent.push([examSdt]);
+    exams.push(examTch);
+    examsStudent.push(examSdt);
   }
 
   // console.log(examsStudent);
-  // console.log(exams);
+  console.log(exams);
 
   return { exams, examsStudent };
 };
