@@ -52,7 +52,7 @@ export const generateExams = (array: any, howMany: number = 4) => {
   }
 
   // console.log(examsStudent);
-  console.log(exams);
+  // console.log(exams);
 
   return { exams, examsStudent };
 };
