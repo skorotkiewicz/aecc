@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "dexie": "^3.2.2",
+    "dexie-export-import": "^1.0.3",
     "dexie-react-hooks": "^1.1.1",
     "nanoid": "3.0.0",
     "react": "^18.2.0",

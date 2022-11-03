@@ -11,6 +11,7 @@ import { DataProvider } from "./context/DataContext";
 import SearchExam from "./pages/SearchExam";
 import E404 from "./components/E404";
 import Print from "./pages/Print";
+import Settings from "./pages/Settings";
 
 ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
   <React.StrictMode>
@@ -25,6 +26,7 @@ ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
             <Route path="create" element={<Create />} />
             <Route path="exams" element={<Exams />} />
             <Route path="search" element={<SearchExam />} />
+            <Route path="settings" element={<Settings />} />
             <Route path="search/:eid" element={<SearchExam />} />
             <Route path="print/:eid" element={<Print />} />
             <Route path="*" element={<E404 />} />

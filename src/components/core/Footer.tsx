@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div>
-      <p>
+      <div>
+        <Link to={`/settings`}>Settings</Link>
+      </div>
+      <div></div>
+      <div>
         <a
           href="https://github.com/skorotkiewicz/aecc"
           target="_blank"
@@ -9,7 +15,7 @@ const Footer = () => {
         >
           Opensource
         </a>
-      </p>
+      </div>
     </div>
   );
 };

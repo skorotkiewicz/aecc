@@ -17,7 +17,12 @@ const Print = () => {
       {exam && (
         <div className="main">
           <div className="barcode">
-            <Barcode width={2} height={40} value={exam.examId} />
+            <Barcode
+              format="CODE128"
+              width={2}
+              height={40}
+              value={exam.examId}
+            />
           </div>
           <div className="q">
             {exam.qa.map((d: any, key: number) => (
@@ -39,7 +44,12 @@ const Print = () => {
           {/*  */}
           <div className="answers">
             <div className="barcode">
-              <Barcode width={2} height={40} value={exam.examId} />
+              <Barcode
+                format="CODE128"
+                width={2}
+                height={40}
+                value={exam.examId}
+              />
             </div>
             {exam.qa.map((d: any, key: number) => (
               <div className="cube" key={key}>

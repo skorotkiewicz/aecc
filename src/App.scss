@@ -202,13 +202,8 @@ main {
 }
 
 footer {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-
   border-top: 3px solid #ededed;
   background-color: #fff;
-  padding: 5px;
 
   a {
     color: #555;
@@ -216,9 +211,11 @@ footer {
   }
 
   div {
+    display: flex;
+    justify-content: space-between;
+
     margin: 5px;
     font-size: 10px;
-    text-align: center;
   }
 }
 
@@ -384,8 +381,48 @@ input[type="checkbox"]:checked:before {
 
 //
 
+.settings {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+
+  .page {
+    font-size: 24px;
+  }
+
+  .windows {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .window {
+    min-width: 210px;
+    min-height: 110px;
+    border: 1px solid #aaa;
+    border-radius: 0.3rem;
+    padding: 10px;
+    text-align: center;
+    margin: 20px 20px 20px 0;
+    background-color: #fcfcfc;
+    font-size: 14px;
+
+    .info {
+      padding: 10px;
+      border-bottom: 1px solid #dedede;
+    }
+
+    button {
+      margin: 10px;
+    }
+  }
+}
+
+//
+
 .print {
+  // width: 800px;
   width: 100vw;
+
   margin: 10px;
   background-color: #fff;
 
