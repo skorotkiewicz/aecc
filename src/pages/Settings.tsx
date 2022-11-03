@@ -13,22 +13,6 @@ const Settings = () => {
       <div className="windows">
         <div className="window">
           <div className="info">Back up your exams or import a backup</div>
-          <button
-            className="btn"
-            onClick={async () => {
-              const blob = await exportDB(db);
-              const url = URL.createObjectURL(blob);
-
-              const el = document.createElement("a");
-              el.href = url;
-              el.download = "AECC-" + Date.now() + ".json";
-              document.body.appendChild(el);
-              el.click();
-              //   URL.revokeObjectURL(url);
-            }}
-          >
-            Export
-          </button>
 
           {loading < 2 ? (
             <input
@@ -58,6 +42,23 @@ const Settings = () => {
             <div style={{ color: "green" }}>Success!</div>
           )}
 
+          <button
+            className="btn"
+            onClick={async () => {
+              const blob = await exportDB(db);
+              const url = URL.createObjectURL(blob);
+
+              const el = document.createElement("a");
+              el.href = url;
+              el.download = "AECC-" + Date.now() + ".json";
+              document.body.appendChild(el);
+              el.click();
+              //   URL.revokeObjectURL(url);
+            }}
+          >
+            Export
+          </button>
+
           {loading === -2 && (
             <div style={{ color: "red" }}>
               Error, delete the database and try import again
@@ -70,13 +71,19 @@ const Settings = () => {
           <button
             className="btn"
             onClick={() => {
-              db.delete()
-                .then(() => {
-                  setAlert("Database successfully deleted");
-                })
-                .catch(() => {
-                  setAlert("Could not delete database");
-                });
+              if (
+                window.confirm(
+                  "Do you really want to destroy database with all Exams?"
+                )
+              ) {
+                db.delete()
+                  .then(() => {
+                    setAlert("Database successfully deleted");
+                  })
+                  .catch(() => {
+                    setAlert("Could not delete database");
+                  });
+              }
             }}
           >
             Delete
