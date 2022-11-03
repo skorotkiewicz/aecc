@@ -27,13 +27,15 @@ const Create = () => {
           ))}
         </div>
 
-        <Model
-          modalOpen={modalOpen}
-          setExams={setExams}
-          setExamsStudents={setExamsStudents}
-          questions={questions}
-          setModalOpen={setModalOpen}
-        />
+        {modalOpen && (
+          <Model
+            modalOpen={modalOpen}
+            setExams={setExams}
+            setExamsStudents={setExamsStudents}
+            questions={questions}
+            setModalOpen={setModalOpen}
+          />
+        )}
 
         {questions.length > 0 && (
           <button
