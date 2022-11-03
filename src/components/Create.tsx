@@ -26,26 +26,29 @@ const Create = () => {
             <QForm key={i} id={i} question={question} />
           ))}
         </div>
-        <button
-          className="generateBtn"
-          onClick={async () => {
-            const c = generateExams(questions);
 
-            if (c.exams[0].length > 0) {
-              setExams(c.exams);
-              setExamsStudents(c.examsStudent);
+        {questions.length > 0 && (
+          <button
+            className="generateBtn"
+            onClick={async () => {
+              const c = generateExams(questions);
 
-              // const id = await db.exams.add({
-              //   examTeacher: c.exams,
-              //   examStudents: c.examsStudent,
-              // });
+              if (c.exams[0].length > 0) {
+                setExams(c.exams);
+                setExamsStudents(c.examsStudent);
 
-              // console.log(id);
-            }
-          }}
-        >
-          Generate
-        </button>
+                // const id = await db.exams.add({
+                //   examTeacher: c.exams,
+                //   examStudents: c.examsStudent,
+                // });
+
+                // console.log(id);
+              }
+            }}
+          >
+            Generate
+          </button>
+        )}
 
         <div>
           {examsStudents.map((e: any, id: number) => (
