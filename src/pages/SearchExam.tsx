@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./../db";
@@ -5,6 +6,7 @@ import { db } from "./../db";
 const SearchExam = () => {
   let { eid } = useParams();
   let navigate = useNavigate();
+  const [search, setSearch] = useState<string>("");
 
   const exam = useLiveQuery(async () => {
     if (eid) {
@@ -17,10 +19,13 @@ const SearchExam = () => {
       <input
         type="text"
         className="search"
+        value={search}
         placeholder="Type ExamID and press Enter"
+        onChange={(e) => setSearch(e.target.value)}
         onKeyDown={(e: any) => {
           if (e.key === "Enter") {
             navigate("/search/" + e.target.value);
+            setSearch("");
           }
         }}
       />
