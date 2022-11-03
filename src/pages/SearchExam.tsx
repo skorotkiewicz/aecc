@@ -30,6 +30,10 @@ const SearchExam = () => {
         }}
       />
 
+      {!exam && eid && (
+        <div style={{ margin: 15 }}>No exam found under the given ID.</div>
+      )}
+
       {exam && (
         <div className="allExams">
           <p className="eid">

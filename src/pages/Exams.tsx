@@ -6,7 +6,7 @@ const Exams = () => {
 
   return (
     <div>
-      {exams &&
+      {exams && exams.length > 0 ? (
         exams.map((d: any, key: number) => (
           <div className="allExams" key={key}>
             <div className="eid">
@@ -35,7 +35,12 @@ const Exams = () => {
               </div>
             ))}
           </div>
-        ))}
+        ))
+      ) : (
+        <div style={{ margin: 15 }}>
+          There are no exams yet. Try adding a new exams.
+        </div>
+      )}
     </div>
   );
 };
