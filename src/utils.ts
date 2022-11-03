@@ -1,5 +1,13 @@
 import { customAlphabet } from "nanoid";
 const nanoid = customAlphabet("1234567890", 10);
+import { db } from "./db";
+
+const addToDb = async (examId: any, qa: any) => {
+  return await db.exams.add({
+    examId,
+    qa,
+  });
+};
 
 // Durstenfeld algorithm
 export const arrayShuffle = (array: any) => {
@@ -27,19 +35,17 @@ export const generateExams = (array: any, howMany: number = 4) => {
     copyArr = arrayShuffle(copyArr);
     examTch = [];
     examSdt = [];
-    let examId;
+    let examId = nanoid();
     let correctAnswers: number[] = [];
 
     let examQuestion: any = "";
     let examAnswers: any = [];
 
-    copyArr.map((q: any, uid: number) => {
+    copyArr.map(async (q: any, uid: number) => {
       correctAnswers = [];
 
       examAnswers = arrayShuffle(q.answers);
       examQuestion = q.question;
-      // examId = i;
-      examId = nanoid();
 
       examAnswers.map((a: any, id: number) => {
         if (a.correct) {
@@ -47,8 +53,6 @@ export const generateExams = (array: any, howMany: number = 4) => {
         }
       });
 
-      // examTch.push({ qid: q.id, examId, c: correctAnswers });
-      // examTch.push({ q: q.id, c: correctAnswers });
       examTch.push({
         // q: q.id,
         u: uid + 1,
@@ -64,12 +68,11 @@ export const generateExams = (array: any, howMany: number = 4) => {
       });
     });
 
+    addToDb(examId, examSdt);
+
     exams.push(examTch);
     examsStudent.push(examSdt);
   }
-
-  // console.log(examsStudent);
-  // console.log(exams);
 
   return { exams, examsStudent };
 };

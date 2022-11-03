@@ -1,8 +1,7 @@
 import { useState } from "react";
+import QForm from "../components/QForm";
 import { useData } from "../context/DataContext";
-// import { db } from "../db";
 import { generateExams } from "../utils";
-import QForm from "./QForm";
 
 const Create = () => {
   const { questions, setQuestions }: any = useData();
@@ -36,13 +35,6 @@ const Create = () => {
               if (c.exams[0].length > 0) {
                 setExams(c.exams);
                 setExamsStudents(c.examsStudent);
-
-                // const id = await db.exams.add({
-                //   examTeacher: c.exams,
-                //   examStudents: c.examsStudent,
-                // });
-
-                // console.log(id);
               }
             }}
           >

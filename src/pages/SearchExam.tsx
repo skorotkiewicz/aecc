@@ -1,0 +1,57 @@
+import { useParams, useNavigate } from "react-router-dom";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "./../db";
+
+const SearchExam = () => {
+  let { eid } = useParams();
+  let navigate = useNavigate();
+
+  const exam = useLiveQuery(async () => {
+    if (eid) {
+      return await db.exams.get({ examId: eid });
+    }
+  }, [eid]);
+
+  return (
+    <div>
+      <input
+        type="text"
+        className="search"
+        placeholder="Type ExamID and press Enter"
+        onKeyDown={(e: any) => {
+          if (e.key === "Enter") {
+            navigate("/search/" + e.target.value);
+          }
+        }}
+      />
+
+      {exam && (
+        <div className="allExams">
+          <p className="eid">
+            Exam ID: <strong>{exam.examId}</strong>
+          </p>
+
+          {exam.qa.map((d: any, key: number) => (
+            <div className="exam-main" key={key}>
+              <div>
+                <p style={{ fontSize: 10 }}>ID: {d.u}</p>
+                <p className="title">{d.q}</p>
+              </div>
+
+              <ul>
+                {d.a.map((d: any, key: number) => (
+                  <li style={{ color: d.correct ? "green" : "red" }} key={key}>
+                    <span className="num">{key + 1}) </span>
+                    {d.answer}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default SearchExam;

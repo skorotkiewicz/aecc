@@ -1,7 +1,7 @@
 import Dexie from "dexie";
 
-export const db: any = new Dexie("aecc-test");
+export const db: any = new Dexie("aecc-dev");
 
 db.version(1).stores({
-  exams: "++id, examTeacher, examStudents",
+  exams: "++id, examId, qa",
 });
