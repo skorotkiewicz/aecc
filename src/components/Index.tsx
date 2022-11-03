@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
-    <div>
-      <Link to="create">Create Exam</Link>
-      <Link to="check">Check Exam</Link>
+    <div className="welcome">
+      <p>AECC</p>
+      <span>Automated exam creator and correction</span>
     </div>
   );
 };

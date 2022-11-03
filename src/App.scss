@@ -29,6 +29,19 @@ body {
   }
 }
 
+.welcome {
+  color: #222;
+  margin: 20px;
+  font-weight: lighter;
+
+  p {
+    font-size: 140px;
+  }
+  span {
+    font-size: 40px;
+  }
+}
+
 main {
   flex-grow: 1;
 }
