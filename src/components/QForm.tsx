@@ -35,6 +35,7 @@ const QForm = ({ id, question }: any) => {
         <input
           type="text"
           className="question"
+          value={question.question}
           onChange={(e) => {
             question.id = id;
             question.question = e.target.value;

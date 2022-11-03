@@ -14,14 +14,25 @@ body {
 }
 
 .allExams {
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
+  border-bottom: 4px solid #bbb;
   margin: 5px 5px 20px 5px;
   padding: 5px;
-  background-color: #f3f3f3;
+  background-color: #eaeaea;
   border-radius: 1rem;
 
   .eid {
     margin-left: 5px;
+
+    a {
+      text-decoration: none;
+      color: #111;
+    }
+  }
+
+  .reuse {
+    margin-top: -10px;
+    float: right;
   }
 
   .exam-main {
@@ -361,4 +372,95 @@ input[type="checkbox"]:before {
 
 input[type="checkbox"]:checked:before {
   color: #6db500 !important;
+}
+
+.clear {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 10px;
+  opacity: 0.7;
+}
+
+//
+
+.print {
+  width: 100vw;
+  margin: 10px;
+  background-color: #fff;
+
+  .main {
+    padding: 10px;
+
+    .barcode {
+      display: flex;
+      justify-content: flex-end;
+      margin: 5px;
+      margin-bottom: -10px;
+      margin-right: 30px;
+    }
+  }
+
+  .q {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .qa {
+    width: 280px;
+    padding: 15px;
+    margin: 10px;
+    position: relative;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+
+    span {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 10px 10px -25px;
+    }
+
+    li {
+      list-style: upper-latin;
+    }
+
+    li:not(:first-of-type) {
+      margin-top: 1em;
+    }
+
+    li:not(:last-of-type) {
+      margin-bottom: 1em;
+    }
+
+    ul {
+      line-height: 25px;
+    }
+
+    p {
+      font-size: 20px;
+      margin: 5px 0 15px 0;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  .answers {
+    margin-top: 50px;
+
+    .cube {
+      border-bottom: 1px solid #ccc;
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      font-weight: bold;
+
+      .circle {
+        padding: 5px;
+        margin: 10px;
+        border: 2px solid #333;
+        border-radius: 6rem;
+        font-weight: normal;
+      }
+    }
+  }
 }

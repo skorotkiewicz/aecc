@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./../db";
 
@@ -37,7 +37,10 @@ const SearchExam = () => {
       {exam && (
         <div className="allExams">
           <p className="eid">
-            Exam ID: <strong>{exam.examId}</strong>
+            Exam ID:{" "}
+            <strong>
+              <Link to={`/print/${exam.examId}`}>{exam.examId}</Link>
+            </strong>
           </p>
 
           {exam.qa.map((d: any, key: number) => (

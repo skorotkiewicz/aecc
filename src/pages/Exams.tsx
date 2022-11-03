@@ -1,8 +1,12 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./../db";
+import { useData } from "../context/DataContext";
 
 const Exams = () => {
+  const { setQuestions }: any = useData();
   const exams = useLiveQuery(() => db.exams.toArray());
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -10,7 +14,25 @@ const Exams = () => {
         exams.map((d: any, key: number) => (
           <div className="allExams" key={key}>
             <div className="eid">
-              Exam ID: <strong>{d.examId}</strong>
+              Exam ID:{" "}
+              <strong>
+                <Link to={`/print/${d.examId}`}>{d.examId}</Link>
+
+                <button
+                  className="reuse btn"
+                  onClick={async () => {
+                    const exam = await db.exams.get({ examId: d.examId });
+                    const stg: any = [];
+                    exam.qa.map((d: any) => {
+                      stg.push({ id: d.u - 1, question: d.q, answers: d.a });
+                    });
+                    setQuestions(stg);
+                    navigate("/create");
+                  }}
+                >
+                  Reuse
+                </button>
+              </strong>
             </div>
 
             {d.qa.map((d: any, key: number) => (

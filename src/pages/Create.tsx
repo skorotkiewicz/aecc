@@ -38,20 +38,31 @@ const Create = () => {
         )}
 
         {questions.length > 0 && (
-          <button
-            className={!modalOpen ? "generateBtn" : "fixedBtn"}
-            onClick={() => setModalOpen((prev) => !prev)}
-          >
-            {modalOpen ? <XCircle width={22} /> : <span>Generate</span>}
-          </button>
+          <>
+            <button
+              className="btn clear"
+              onClick={() => {
+                if (window.confirm("Do you really want to clear form?")) {
+                  setQuestions([]);
+                }
+              }}
+            >
+              Clear form
+            </button>
+
+            <button
+              className={!modalOpen ? "generateBtn" : "fixedBtn"}
+              onClick={() => setModalOpen((prev) => !prev)}
+            >
+              {modalOpen ? <XCircle width={22} /> : <span>Generate</span>}
+            </button>
+          </>
         )}
 
         <div>
           {examsStudents.map((e: any, id: number) => (
             <div className="exam-main" key={id}>
               <h3>Exam ID: {e[0].e}</h3>
-              {/* <Barcode value={e[0].e} /> */}
-              {/* <div>{JSON.stringify(exams[id])}</div> */}
               {e.map((a: any, k: number) => (
                 <div key={k} className="exam-question">
                   <h4>Question: {a.u}</h4>
