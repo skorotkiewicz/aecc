@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Trash, PlusCircle } from "react-feather";
+import { Trash, Trash2, PlusCircle } from "react-feather";
 import { useData } from "../context/DataContext";
 
 const QForm = ({ id, question }: any) => {
@@ -11,6 +11,12 @@ const QForm = ({ id, question }: any) => {
     question.answers[answers] = {};
 
     setAnswers((prev: number) => prev + 1);
+    setQuestions([...questions]);
+  };
+
+  const deleteQuestion = (id: number) => {
+    // fixme
+    questions.splice(id, 1);
     setQuestions([...questions]);
   };
 
@@ -65,7 +71,17 @@ const QForm = ({ id, question }: any) => {
         </div>
       ))}
 
-      <PlusCircle color="#777" size={18} onClick={addAnswer} className="add" />
+      <div className="add">
+        <PlusCircle color="#777" size={18} onClick={addAnswer} />
+        <Trash2
+          color="#999"
+          size={18}
+          style={{ float: "right" }}
+          onClick={() => {
+            deleteQuestion(id);
+          }}
+        />
+      </div>
     </div>
   );
 };

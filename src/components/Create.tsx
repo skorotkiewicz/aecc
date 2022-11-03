@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useData } from "../context/DataContext";
-import { db } from "../db";
+// import { db } from "../db";
 import { generateExams } from "../utils";
 import QForm from "./QForm";
 
@@ -19,6 +19,7 @@ const Create = () => {
       <button className="add-question" onClick={addQuestion}>
         Add Question
       </button>
+
       <div className="container">
         <div className="questions">
           {questions.map((question: string, i: number) => (
@@ -26,6 +27,7 @@ const Create = () => {
           ))}
         </div>
         <button
+          className="generateBtn"
           onClick={async () => {
             const c = generateExams(questions);
 
@@ -33,12 +35,12 @@ const Create = () => {
               setExams(c.exams);
               setExamsStudents(c.examsStudent);
 
-              const id = await db.exams.add({
-                examTeacher: c.exams,
-                examStudents: c.examsStudent,
-              });
+              // const id = await db.exams.add({
+              //   examTeacher: c.exams,
+              //   examStudents: c.examsStudent,
+              // });
 
-              console.log(id);
+              // console.log(id);
             }
           }}
         >

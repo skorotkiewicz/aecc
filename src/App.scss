@@ -68,15 +68,19 @@ main {
 }
 
 .add-question {
-  width: 100vw;
   position: fixed;
-  z-index: 2;
-  bottom: 0;
-  border-top: 3px solid orange;
-  border-bottom: 0;
-  border-left: 0;
-  border-right: 0;
+  top: 0;
+  left: 40vw;
+}
+
+.generateBtn,
+.add-question {
+  z-index: 5;
+  border: 1px solid #ccc;
+  border-bottom: 3px solid #bbb;
+  border-radius: 0.2rem;
   padding: 5px;
+  margin: 10px;
   background-color: #fff;
   cursor: pointer;
 }
@@ -140,7 +144,7 @@ header {
   flex-direction: column;
   width: 300px;
   border: 1px solid #ccc;
-  padding: 15px;
+  padding: 10px;
   background-color: #fcfcfc;
 
   .question {
@@ -178,7 +182,9 @@ header {
   }
 
   .add {
-    margin-top: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 15px;
     cursor: pointer;
   }
 }
