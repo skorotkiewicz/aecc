@@ -9,6 +9,7 @@ import Footer from "./components/core/Footer";
 import Exams from "./pages/Exams";
 import { DataProvider } from "./context/DataContext";
 import SearchExam from "./pages/SearchExam";
+import E404 from "./components/E404";
 
 ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
   <React.StrictMode>
@@ -24,7 +25,7 @@ ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
             <Route path="exams" element={<Exams />} />
             <Route path="search" element={<SearchExam />} />
             <Route path="search/:eid" element={<SearchExam />} />
-            <Route path="*" element={<div>404 Not Found</div>} />
+            <Route path="*" element={<E404 />} />
           </Routes>
         </main>
         <footer>

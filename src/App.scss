@@ -25,6 +25,7 @@ body {
   }
 
   .exam-main {
+    position: relative;
     border: 1px solid #ccc;
 
     ul {
@@ -34,13 +35,23 @@ body {
 
   .title {
     font-size: 20px;
-    padding: 5px 0 5px 0;
+    // padding: 5px 0 5px 0;
     border-bottom: 1px solid #ccc;
   }
 
   .num {
     color: #555;
   }
+}
+
+.id {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 3;
+  background-color: #ebebeb;
+  padding: 3px;
+  border-radius: 0.3rem;
 }
 
 .search {
@@ -88,6 +99,13 @@ body {
   }
   span {
     font-size: 40px;
+  }
+
+  a {
+    margin-left: 40px;
+    text-decoration: none;
+    font-size: 24px;
+    color: #333;
   }
 }
 

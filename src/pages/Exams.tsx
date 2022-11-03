@@ -16,7 +16,9 @@ const Exams = () => {
             {d.qa.map((d: any, key: number) => (
               <div className="exam-main" key={key}>
                 <div>
-                  <p style={{ fontSize: 10 }}>ID: {d.u}</p>
+                  <p className="id" style={{ fontSize: 10 }}>
+                    ID: {d.u}
+                  </p>
                   <p className="title">{d.q}</p>
                 </div>
                 <ul>
