@@ -27,15 +27,25 @@ body {
     color: #333;
     text-decoration: none;
   }
+  cursor: pointer;
 }
 
 .welcome {
+  display: flex;
   color: #222;
   margin: 20px;
   font-weight: lighter;
 
+  width: 600px;
+
+  img {
+    margin: 50px;
+    width: 200px;
+  }
+
   p {
     font-size: 140px;
+    letter-spacing: -20pt;
   }
   span {
     font-size: 40px;
