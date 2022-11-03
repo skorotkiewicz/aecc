@@ -1,7 +1,15 @@
 const Footer = () => {
   return (
     <div>
-      <p>Footer</p>
+      <p>
+        <a
+          href="https://github.com/skorotkiewicz/aecc"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Opensource
+        </a>
+      </p>
     </div>
   );
 };
