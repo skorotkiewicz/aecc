@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { XCircle } from "react-feather";
 import Model from "../components/Model";
@@ -26,7 +27,6 @@ const Create = () => {
             <QForm key={i} id={i} question={question} />
           ))}
         </div>
-
         {modalOpen && (
           <Model
             modalOpen={modalOpen}
@@ -36,8 +36,7 @@ const Create = () => {
             setModalOpen={setModalOpen}
           />
         )}
-
-        {questions.length > 0 && (
+        {questions.length > 0 ? (
           <>
             <button
               className="btn clear"
@@ -57,12 +56,19 @@ const Create = () => {
               {modalOpen ? <XCircle width={22} /> : <span>Generate</span>}
             </button>
           </>
+        ) : (
+          <div>
+            To add a question to the exam, click on &quot;Add Question&quot; at
+            the top of the page.
+          </div>
         )}
 
         <div>
           {examsStudents.map((e: any, id: number) => (
             <div className="exam-main" key={id}>
-              <h3>Exam ID: {e[0].e}</h3>
+              <h3 className="h3l">
+                Exam ID: <Link to={`/print/${e[0].e}`}>{e[0].e}</Link>
+              </h3>
               {e.map((a: any, k: number) => (
                 <div key={k} className="exam-question">
                   <h4>Question: {a.u}</h4>
@@ -79,13 +85,14 @@ const Create = () => {
             </div>
           ))}
         </div>
-
         {exams.length > 0 && (
           <div>
             <h2>Solutions:</h2>
             {exams.map((e: any, k: number) => (
               <div style={{ border: "1px solid #aaa", margin: 10 }} key={k}>
-                <h3>Exam ID: {e[0].e}</h3>
+                <h3 className="h3l">
+                  Exam ID: <Link to={`/print/${e[0].e}`}>{e[0].e}</Link>
+                </h3>
                 {e.map((a: any, k: number) => (
                   <div style={{ border: "1px solid #ccc", margin: 7 }} key={k}>
                     Question: {a.u}

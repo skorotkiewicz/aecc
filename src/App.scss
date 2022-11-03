@@ -251,6 +251,11 @@ header {
   }
 }
 
+.h3l > a {
+  color: #333;
+  text-decoration: none;
+}
+
 .question-form {
   display: flex;
   flex-direction: column;
