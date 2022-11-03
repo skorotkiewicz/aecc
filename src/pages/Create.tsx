@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { XCircle } from "react-feather";
+import Model from "../components/Model";
 import QForm from "../components/QForm";
 import { useData } from "../context/DataContext";
-import { generateExams } from "../utils";
 
 const Create = () => {
   const { questions, setQuestions }: any = useData();
-
   const [exams, setExams] = useState<any>([]);
   const [examsStudents, setExamsStudents] = useState<any>([]);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   const addQuestion = () => {
     setQuestions((prev: any) => [...prev, { answers: [{}, {}, {}, {}] }]);
@@ -26,19 +27,20 @@ const Create = () => {
           ))}
         </div>
 
+        <Model
+          modalOpen={modalOpen}
+          setExams={setExams}
+          setExamsStudents={setExamsStudents}
+          questions={questions}
+          setModalOpen={setModalOpen}
+        />
+
         {questions.length > 0 && (
           <button
-            className="generateBtn"
-            onClick={async () => {
-              const c = generateExams(questions);
-
-              if (c.exams[0].length > 0) {
-                setExams(c.exams);
-                setExamsStudents(c.examsStudent);
-              }
-            }}
+            className={!modalOpen ? "generateBtn" : "fixedBtn"}
+            onClick={() => setModalOpen((prev) => !prev)}
           >
-            Generate
+            {modalOpen ? <XCircle width={22} /> : <span>Generate</span>}
           </button>
         )}
 
