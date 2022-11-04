@@ -5,8 +5,12 @@ import { useData } from "../context/DataContext";
 
 const Exams = () => {
   const { setQuestions }: any = useData();
-  const exams = useLiveQuery(() => db.exams.reverse().toArray());
   const navigate = useNavigate();
+  let exams = [];
+
+  try {
+    exams = useLiveQuery(() => db.exams.reverse().toArray());
+  } catch (_) {}
 
   return (
     <div>
