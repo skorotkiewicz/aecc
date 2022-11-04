@@ -32,6 +32,7 @@ body {
 
   .reuse {
     margin-top: -10px;
+    margin-right: 5px;
     float: right;
   }
 
@@ -215,7 +216,7 @@ footer {
     justify-content: space-between;
 
     margin: 5px;
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 
@@ -435,11 +436,18 @@ input[type="checkbox"]:checked:before {
     padding: 10px;
 
     .barcode {
-      display: flex;
-      justify-content: flex-end;
-      margin: 5px;
-      margin-bottom: -10px;
-      margin-right: 30px;
+      //
+
+      position: fixed;
+      top: 200px;
+      right: -80px;
+      transform: rotate(90deg);
+
+      // display: flex;
+      // justify-content: flex-end;
+      // margin: 5px;
+      // margin-bottom: -10px;
+      // margin-right: 30px;
     }
   }
 
@@ -453,8 +461,8 @@ input[type="checkbox"]:checked:before {
     padding: 15px;
     margin: 10px;
     position: relative;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    border-top: 1.5px solid #ccc;
+    border-right: 1.5px solid #ccc;
 
     span {
       font-size: 24px;
@@ -490,7 +498,7 @@ input[type="checkbox"]:checked:before {
     margin-top: 50px;
 
     .cube {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1.5px solid #ccc;
       padding: 10px;
       margin: 5px;
       font-size: 16px;
@@ -504,5 +512,29 @@ input[type="checkbox"]:checked:before {
         font-weight: normal;
       }
     }
+  }
+}
+
+@media print {
+  html,
+  body {
+    height: initial !important;
+    overflow: initial !important;
+  }
+
+  header,
+  footer {
+    display: none;
+  }
+
+  @page {
+    size: auto;
+    // margin: 20mm;
+  }
+
+  .print {
+    margin-top: 1rem;
+    display: block;
+    page-break-before: auto;
   }
 }

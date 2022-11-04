@@ -5,7 +5,7 @@ import { useData } from "../context/DataContext";
 
 const Exams = () => {
   const { setQuestions }: any = useData();
-  const exams = useLiveQuery(() => db.exams.toArray());
+  const exams = useLiveQuery(() => db.exams.reverse().toArray());
   const navigate = useNavigate();
 
   return (
@@ -17,6 +17,19 @@ const Exams = () => {
               Exam ID:{" "}
               <strong>
                 <Link to={`/print/${d.examId}`}>{d.examId}</Link>
+
+                <button
+                  className="reuse btn"
+                  onClick={async () => {
+                    if (
+                      window.confirm("Do you really want delete this exam?")
+                    ) {
+                      await db.exams.where("examId").equals(d.examId).delete();
+                    }
+                  }}
+                >
+                  Delete
+                </button>
 
                 <button
                   className="reuse btn"
