@@ -5,4 +5,4 @@
 </p>
 
 <h1 align="center">AECC</h1>
-<p align="center">Automated exam creator and correction</p>
+<p align="center">Automated unique exam creator and correction</p>
