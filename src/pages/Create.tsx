@@ -66,7 +66,7 @@ const Create = () => {
             </button>
           </>
         ) : (
-          <div>
+          <div className="info">
             To add a question to the exam, click on &quot;Add Question&quot; at
             the top of the page.
           </div>
