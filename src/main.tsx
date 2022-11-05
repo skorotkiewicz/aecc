@@ -8,10 +8,11 @@ import Header from "./components/core/Header";
 import Footer from "./components/core/Footer";
 import Exams from "./pages/Exams";
 import { DataProvider } from "./context/DataContext";
-import SearchExam from "./pages/SearchExam";
+import Search from "./pages/Search";
 import E404 from "./components/E404";
 import Print from "./pages/Print";
 import Settings from "./pages/Settings";
+import Exam from "./pages/Exam";
 
 ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
   <React.StrictMode>
@@ -25,10 +26,12 @@ ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
             <Route index element={<Index />} />
             <Route path="create" element={<Create />} />
             <Route path="exams" element={<Exams />} />
-            <Route path="search" element={<SearchExam />} />
             <Route path="settings" element={<Settings />} />
-            <Route path="search/:eid" element={<SearchExam />} />
-            <Route path="print/:eid" element={<Print />} />
+            <Route path="search" element={<Search />}>
+              <Route path=":id" element={<Search />} />
+            </Route>
+            <Route path="exam/:id" element={<Exam />} />
+            <Route path="print/:tid" element={<Print />} />
             <Route path="*" element={<E404 />} />
           </Routes>
         </main>

@@ -25,7 +25,7 @@ body {
     margin-left: 5px;
 
     a {
-      text-decoration: none;
+      text-decoration: underline;
       color: #111;
     }
   }
@@ -254,7 +254,7 @@ header {
 
 .h3l > a {
   color: #333;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .question-form {
@@ -512,6 +512,25 @@ input[type="checkbox"]:checked:before {
         font-weight: normal;
       }
     }
+  }
+}
+
+.examTitle {
+  margin-bottom: 20px;
+
+  label {
+    font-size: 14px;
+
+    p {
+      margin-bottom: 5px;
+    }
+  }
+
+  input {
+    width: 90vw;
+    padding: 7px;
+    border: 1px solid #555;
+    border-radius: 0.2rem;
   }
 }
 

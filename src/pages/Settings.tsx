@@ -105,11 +105,6 @@ const Settings = () => {
             <option value="CODE128">CODE128</option>
             <option value="MSI">MSI</option>
             <option value="codabar">Codabar</option>
-
-            <option value="EAN13">EAN13</option>
-            <option value="ITF14">ITF14</option>
-            <option value="pharmacode">Pharmacode</option>
-            <option value="upc">UPC</option>
           </select>
         </div> */}
       </div>

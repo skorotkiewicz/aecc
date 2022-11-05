@@ -49,19 +49,19 @@ const QForm = ({ id, question }: any) => {
           <input
             type="text"
             className="answer-input"
-            value={question.answers[i].answer}
+            value={question.answers[i].a}
             onChange={(e) => {
-              question.answers[i].answer = e.target.value;
+              question.answers[i].a = e.target.value;
               setQuestions([...questions]);
             }}
           />
 
           <input
             type="checkbox"
-            checked={question.answers[i].correct}
+            checked={question.answers[i].c}
             tabIndex={i + 1}
             onChange={(e) => {
-              question.answers[i].correct = e.target.checked;
+              question.answers[i].c = e.target.checked;
               setQuestions([...questions]);
             }}
           />

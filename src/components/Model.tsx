@@ -1,14 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { generateExams } from "../utils";
+import { useData } from "../context/DataContext";
 
-const Model = ({
-  setExams,
-  setExamsStudents,
-  questions,
-  setModalOpen,
-}: any) => {
+const Model = ({ questions, setModalOpen, examTitle }: any) => {
   const [checked, setChecked] = useState<boolean>(false);
   const [numExams, setNumExams] = useState<number>(4);
+  const { setQuestions }: any = useData();
+  let navigate = useNavigate();
 
   return (
     <div className="modal">
@@ -39,10 +38,10 @@ const Model = ({
           <button
             className="btn"
             onClick={async () => {
-              const c = generateExams(questions, numExams);
-              if (c.exams[0].length > 0) {
-                setExams(c.exams);
-                setExamsStudents(c.examsStudent);
+              const c = generateExams(questions, numExams, examTitle);
+              if (c.examId) {
+                setQuestions([]);
+                navigate(`/exam/${c.examId}`);
                 setModalOpen(false);
               }
             }}

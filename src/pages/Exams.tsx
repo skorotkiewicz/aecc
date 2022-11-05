@@ -1,11 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./../db";
-import { useData } from "../context/DataContext";
+import Reuse from "../components/Reuse";
 
 const Exams = () => {
-  const { setQuestions }: any = useData();
-  const navigate = useNavigate();
   let exams = [];
 
   try {
@@ -15,66 +13,36 @@ const Exams = () => {
   return (
     <div>
       {exams && exams.length > 0 ? (
-        exams.map((d: any, key: number) => (
-          <div className="allExams" key={key}>
-            <div className="eid">
-              Exam ID:{" "}
+        <div>
+          {exams.map((d: any, key: number) => (
+            <div className="allExams" key={key}>
+              <button
+                className="reuse btn"
+                onClick={async () => {
+                  if (
+                    window.confirm(
+                      "Do you really want delete this exam included all test?"
+                    )
+                  ) {
+                    await db.exams.where("examId").equals(d.examId).delete();
+                    await db.tests.where("testId").anyOf(d.tests).delete();
+                  }
+                }}
+              >
+                Delete
+              </button>
+              <Reuse testId={d.tests[0]} />
+
+              <p style={{ marginBottom: 10 }}>{d.title}</p>
               <strong>
-                <Link to={`/print/${d.examId}`}>{d.examId}</Link>
-
-                <button
-                  className="reuse btn"
-                  onClick={async () => {
-                    if (
-                      window.confirm("Do you really want delete this exam?")
-                    ) {
-                      await db.exams.where("examId").equals(d.examId).delete();
-                    }
-                  }}
-                >
-                  Delete
-                </button>
-
-                <button
-                  className="reuse btn"
-                  onClick={async () => {
-                    const exam = await db.exams.get({ examId: d.examId });
-                    const stg: any = [];
-                    exam.qa.map((d: any) => {
-                      stg.push({ id: d.u - 1, question: d.q, answers: d.a });
-                    });
-                    setQuestions(stg);
-                    navigate("/create");
-                  }}
-                >
-                  Reuse
-                </button>
+                <p>
+                  Exam Id: <Link to={`/exam/${d.examId}`}>{d.examId}</Link>
+                </p>
               </strong>
+              <p>Exam with {d.tests.length} tests</p>
             </div>
-
-            {d.qa.map((d: any, key: number) => (
-              <div className="exam-main" key={key}>
-                <div>
-                  <p className="id" style={{ fontSize: 10 }}>
-                    ID: {d.u}
-                  </p>
-                  <p className="title">{d.q}</p>
-                </div>
-                <ul>
-                  {d.a.map((d: any, key: number) => (
-                    <li
-                      key={key}
-                      style={{ color: d.correct ? "green" : "red" }}
-                    >
-                      <span className="num">{key + 1}) </span>
-                      {d.answer}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        ))
+          ))}
+        </div>
       ) : (
         <div style={{ margin: 15 }}>
           There are no exams yet. Try adding a new exams.

@@ -4,28 +4,28 @@ import Barcode from "react-barcode";
 import { db } from "../db";
 
 const Print = () => {
-  let { eid } = useParams();
+  let { tid } = useParams();
 
-  const exam = useLiveQuery(async () => {
-    if (eid) {
-      return await db.exams.get({ examId: eid });
+  const test = useLiveQuery(async () => {
+    if (tid) {
+      return await db.tests.get({ testId: tid });
     }
   }, []);
 
   return (
     <div className="print">
-      {exam && (
+      {test && (
         <div className="main">
           <div className="barcode">
             <Barcode
               format="CODE128"
               width={2}
               height={40}
-              value={exam.examId}
+              value={test.testId}
             />
           </div>
           <div className="q">
-            {exam.qa.map((d: any, key: number) => (
+            {test.qa.map((d: any, key: number) => (
               <div className="qa" key={key}>
                 <p>
                   <span>{d.u}</span>
@@ -34,7 +34,7 @@ const Print = () => {
 
                 <ol>
                   {d.a.map((d: any, key: number) => (
-                    <li key={key}>{d.answer}</li>
+                    <li key={key}>{d.a}</li>
                   ))}
                 </ol>
               </div>
@@ -48,10 +48,10 @@ const Print = () => {
                 format="CODE128"
                 width={2}
                 height={40}
-                value={exam.examId}
+                value={test.testId}
               />
             </div>
-            {exam.qa.map((d: any, key: number) => (
+            {test.qa.map((d: any, key: number) => (
               <div className="cube" key={key}>
                 <span>{d.u})</span>
                 {d.a.map((_d: any, key: number) => (
