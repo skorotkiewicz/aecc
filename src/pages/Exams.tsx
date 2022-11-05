@@ -35,7 +35,7 @@ const Exams = () => {
 
               <p style={{ marginBottom: 10 }}>{d.title}</p>
               <strong>
-                <p>
+                <p className="examsa">
                   Exam Id: <Link to={`/exam/${d.examId}`}>{d.examId}</Link>
                 </p>
               </strong>
