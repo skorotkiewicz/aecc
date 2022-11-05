@@ -53,7 +53,8 @@ const Print = () => {
             </div>
             {test.qa.map((d: any, key: number) => (
               <div className="cube" key={key}>
-                <span>{d.u})</span>
+                <span className="cubeid">{d.u})</span>
+
                 {d.a.map((_d: any, key: number) => (
                   <span key={key} className="circle">
                     {(key + 1 + 9).toString(36).toUpperCase()}

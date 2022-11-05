@@ -504,11 +504,19 @@ input[type="checkbox"]:checked:before {
       font-size: 16px;
       font-weight: bold;
 
+      .cubeid {
+        margin-right: 10px;
+      }
+
       .circle {
-        padding: 5px;
-        margin: 10px;
+        text-align: center;
+        height: 25px;
+        width: 25px;
+        border-radius: 2rem;
+        display: inline-block;
+
+        margin: 5px;
         border: 2px solid #333;
-        border-radius: 6rem;
         font-weight: normal;
       }
     }
