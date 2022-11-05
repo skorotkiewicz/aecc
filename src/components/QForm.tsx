@@ -15,7 +15,6 @@ const QForm = ({ id, question }: any) => {
   };
 
   const deleteQuestion = (id: number) => {
-    // fixme
     questions.splice(id, 1);
     setQuestions([...questions]);
   };
