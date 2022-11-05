@@ -14,7 +14,7 @@ const Print = () => {
 
   return (
     <div className="print">
-      {test && (
+      {test ? (
         <div className="main">
           <div className="barcode">
             <Barcode
@@ -64,6 +64,8 @@ const Print = () => {
           </div>
           {/*  */}
         </div>
+      ) : (
+        <div>ID not found.</div>
       )}
     </div>
   );

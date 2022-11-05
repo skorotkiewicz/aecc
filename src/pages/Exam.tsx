@@ -7,15 +7,20 @@ const Exam = () => {
 
   const exam = useLiveQuery(async () => {
     if (id) {
-      const exam = await db.exams.get({ examId: id });
-      const tests = await db.tests.where("testId").anyOf(exam.tests).toArray();
-      return { examId: exam.examId, tests };
+      try {
+        const exam = await db.exams.get({ examId: id });
+        const tests = await db.tests
+          .where("testId")
+          .anyOf(exam.tests)
+          .toArray();
+        return { examId: exam.examId, tests };
+      } catch (_) {}
     }
   }, []);
 
   return (
     <div className="container">
-      {exam && (
+      {exam ? (
         <div>
           <div>Exam ID: {exam.examId}</div>
 
@@ -54,6 +59,8 @@ const Exam = () => {
             </div>
           ))}
         </div>
+      ) : (
+        <div>ID not found.</div>
       )}
     </div>
   );
