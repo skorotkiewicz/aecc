@@ -7,7 +7,7 @@ const Index = () => {
       </div>
 
       <div>
-        <img src="/logo.png" alt="AECC Logo" />
+        <img src="logo.png" alt="AECC Logo" />
       </div>
     </div>
   );
