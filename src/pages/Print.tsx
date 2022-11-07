@@ -2,6 +2,24 @@ import { useParams } from "react-router-dom";
 import { useLiveQuery } from "dexie-react-hooks";
 import Barcode from "react-barcode";
 import { db } from "../db";
+import ReactToPrint from "react-to-print";
+import { useRef } from "react";
+
+const PrintButton = () => {
+  const componentRef = useRef<any>(null);
+
+  return (
+    <div>
+      <ReactToPrint
+        trigger={() => <button className="btn">Print</button>}
+        content={() => componentRef.current}
+      />
+      <div ref={componentRef}>
+        <Print />
+      </div>
+    </div>
+  );
+};
 
 const Print = () => {
   let { tid } = useParams();
@@ -37,6 +55,7 @@ const Print = () => {
                     <li key={key}>{d.a}</li>
                   ))}
                 </ol>
+                <div className="page-break" />
               </div>
             ))}
           </div>
@@ -72,4 +91,4 @@ const Print = () => {
   );
 };
 
-export default Print;
+export default PrintButton;

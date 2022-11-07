@@ -549,30 +549,6 @@ input[type="checkbox"]:checked:before {
   }
 }
 
-@media print {
-  html,
-  body {
-    height: initial !important;
-    overflow: initial !important;
-  }
-
-  header,
-  footer {
-    display: none;
-  }
-
-  @page {
-    size: auto;
-    // margin: 20mm;
-  }
-
-  .print {
-    margin-top: 1rem;
-    display: block;
-    page-break-before: auto;
-  }
-}
-
 .correction {
   h3 {
     margin-bottom: 20px;
@@ -595,5 +571,40 @@ input[type="checkbox"]:checked:before {
     .cube {
       padding-left: 10px;
     }
+  }
+}
+
+//
+
+@media all {
+  .page-break {
+    display: none;
+  }
+}
+
+@media print {
+  html,
+  body {
+    height: initial !important;
+    overflow: initial !important;
+    // -webkit-print-color-adjust: exact;
+    // print-color-adjust: exact;
+  }
+
+  header,
+  footer {
+    display: none;
+  }
+
+  .page-break {
+    margin-top: 1rem;
+    display: block;
+    // break-before: auto;
+    break-after: auto;
+  }
+
+  @page {
+    size: auto;
+    margin: 20mm;
   }
 }

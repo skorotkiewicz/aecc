@@ -24,9 +24,9 @@ const Exam = () => {
         <div>
           <div>Exam ID: {exam.examId}</div>
 
-          <div className="allExams">
-            {exam.tests.map((d: any, key: number) => (
-              <div className="eid" key={key}>
+          {exam.tests.map((d: any, key: number) => (
+            <div className="allExams" key={key}>
+              <div className="eid">
                 Test ID:{" "}
                 <strong>
                   <Link to={`/print/${d.testId}`}>{d.testId}</Link>
@@ -58,8 +58,8 @@ const Exam = () => {
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       ) : (
         <div>ID not found.</div>
