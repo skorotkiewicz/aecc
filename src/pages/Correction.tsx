@@ -11,6 +11,7 @@ const Correction = () => {
 
   const test = useLiveQuery(async () => {
     if (tid) {
+      setClicked([-1]);
       return await db.tests.get({ testId: tid });
     }
   }, [tid]);
@@ -34,47 +35,41 @@ const Correction = () => {
       )}
 
       {test && test.testId && (
-        <>
+        <div>
           <h3>
             Correction
             <div>Test ID: {test.testId}</div>
           </h3>
 
-          <div>
-            {test.qa.map((d: any, key: number) => (
-              <div
-                className={`solutions ${
-                  clicked.includes(key) ? "clicked" : ""
-                }`}
-                key={key}
-                onClick={() => {
-                  if (clicked.includes(key)) {
-                    setClicked(clicked.filter((e: number) => e !== key));
-                  } else {
-                    setClicked((prev: any) => {
-                      return [...prev, key];
-                    });
-                  }
-                }}
-              >
-                {d.u})
-                {d.a.map((s: any, key: number) => (
-                  <div key={key}>
-                    {s.c && (
-                      <span className="cube">
-                        {s.c && (
-                          <span>
-                            {(key + 1 + 9).toString(36).toUpperCase()}
-                          </span>
-                        )}
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        </>
+          {test.qa.map((d: any, key: number) => (
+            <div
+              className={`solutions ${clicked.includes(key) ? "clicked" : ""}`}
+              key={key}
+              onClick={() => {
+                if (clicked.includes(key)) {
+                  setClicked(clicked.filter((e: number) => e !== key));
+                } else {
+                  setClicked((prev: any) => {
+                    return [...prev, key];
+                  });
+                }
+              }}
+            >
+              {d.u})
+              {d.a.map((s: any, key: number) => (
+                <div key={key}>
+                  {s.c && (
+                    <span className="cube">
+                      {s.c && (
+                        <span>{(key + 1 + 9).toString(36).toUpperCase()}</span>
+                      )}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

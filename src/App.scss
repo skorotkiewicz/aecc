@@ -576,13 +576,12 @@ input[type="checkbox"]:checked:before {
 .correction {
   h3 {
     margin-bottom: 20px;
+    margin: 10px;
     div {
       font-size: 14px;
       font-weight: normal;
     }
   }
-
-  margin: 10px;
 
   .clicked {
     opacity: 0.3;
