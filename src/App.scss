@@ -572,3 +572,29 @@ input[type="checkbox"]:checked:before {
     page-break-before: auto;
   }
 }
+
+.correction {
+  h3 {
+    margin-bottom: 20px;
+    div {
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+
+  margin: 10px;
+
+  .clicked {
+    opacity: 0.3;
+  }
+
+  .solutions {
+    padding: 10px;
+    display: flex;
+    cursor: pointer;
+
+    .cube {
+      padding-left: 10px;
+    }
+  }
+}

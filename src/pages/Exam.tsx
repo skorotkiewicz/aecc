@@ -47,7 +47,9 @@ const Exam = () => {
                             key={key}
                             style={{ color: d.c ? "green" : "red" }}
                           >
-                            <span className="num">{key + 1}) </span>
+                            <span className="num">
+                              {(key + 1 + 9).toString(36).toUpperCase()}){" "}
+                            </span>
                             {d.a}
                           </li>
                         ))}

@@ -1,6 +1,21 @@
+import { DependencyList, useEffect } from "react";
 import { customAlphabet } from "nanoid";
 const nanoid = customAlphabet("1234567890", 10);
 import { db } from "./db";
+
+export const useKeypress = (
+  key: string,
+  action: () => void,
+  deps: DependencyList | undefined
+) => {
+  useEffect(() => {
+    function onKeyup(e: { key: string }) {
+      if (e.key === key) action();
+    }
+    window.addEventListener("keyup", onKeyup);
+    return () => window.removeEventListener("keyup", onKeyup);
+  }, deps);
+};
 
 const addToDb = async (exam: any, examTitle: string) => {
   if (exam.examId && exam.testsIds) {

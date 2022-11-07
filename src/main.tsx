@@ -13,6 +13,7 @@ import E404 from "./components/E404";
 import Print from "./pages/Print";
 import Settings from "./pages/Settings";
 import Exam from "./pages/Exam";
+import Correction from "./pages/Correction";
 
 ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
   <React.StrictMode>
@@ -27,6 +28,9 @@ ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
             <Route path="create" element={<Create />} />
             <Route path="exams" element={<Exams />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="correction" element={<Correction />}>
+              <Route path=":tid" element={<Correction />} />
+            </Route>
             <Route path="search" element={<Search />}>
               <Route path=":id" element={<Search />} />
             </Route>

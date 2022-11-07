@@ -1,12 +1,10 @@
-import { useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "./../db";
+import SearchForm from "../components/SearchForm";
 
 const Search = () => {
   let { id } = useParams();
-  let navigate = useNavigate();
-  const [search, setSearch] = useState<string>("");
 
   const test = useLiveQuery(async () => {
     if (id) {
@@ -22,19 +20,7 @@ const Search = () => {
 
   return (
     <div>
-      <input
-        type="text"
-        className="search"
-        value={search}
-        placeholder="Type Exam or Test ID and press Enter"
-        onChange={(e) => setSearch(e.target.value)}
-        onKeyDown={(e: any) => {
-          if (e.key === "Enter") {
-            navigate("/search/" + e.target.value);
-            setSearch("");
-          }
-        }}
-      />
+      <SearchForm type="s" />
 
       {!test && id && (
         <div style={{ margin: 15 }}>
@@ -65,7 +51,7 @@ const Search = () => {
 
           {test.qa.map((d: any, key: number) => (
             <div className="exam-main" key={key}>
-              <div>
+              <div key={key}>
                 <p className="title">{d.q}</p>
                 <p className="id" style={{ fontSize: 10 }}>
                   ID: {d.u}
@@ -75,7 +61,9 @@ const Search = () => {
               <ul>
                 {d.a.map((d: any, key: number) => (
                   <li style={{ color: d.c ? "green" : "red" }} key={key}>
-                    <span className="num">{key + 1}) </span>
+                    <span className="num">
+                      {(key + 1 + 9).toString(36).toUpperCase()}){" "}
+                    </span>
                     {d.a}
                   </li>
                 ))}
