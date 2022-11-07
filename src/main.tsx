@@ -18,7 +18,7 @@ import Correction from "./pages/Correction";
 ReactDOM.createRoot(document.getElementById("App") as HTMLElement).render(
   <React.StrictMode>
     <DataProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/aecc/">
         <header>
           <Header />
         </header>
